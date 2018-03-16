@@ -8,6 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.util.HtmlUtils;
 
 import java.util.List;
@@ -16,6 +19,7 @@ import java.util.List;
  * Created by JINS on 2018/2/27.
  */
 @Service
+@Transactional(propagation= Propagation.REQUIRED , isolation = Isolation.DEFAULT)
 public class QuestionServiceImpl implements QuestionService{
 
     private static final Logger logger = LoggerFactory.getLogger(QuestionServiceImpl.class);
@@ -53,5 +57,10 @@ public class QuestionServiceImpl implements QuestionService{
     @Override
     public Question selectQuestionById(int id) {
      return     dao.findQuestionById(id);
+    }
+
+    @Override
+    public void updateQuestionCount(int id, int comment_count) {
+        dao.updateQuestionCount(id,comment_count);
     }
 }

@@ -24,6 +24,7 @@ public class LoginRequredInterceptor implements HandlerInterceptor{
         if(hostHolder.getUser()==null)
         {
           response.sendRedirect("/login/tologin.do?next="+request.getRequestURI());
+          return false;
         }
         return true;
     }

@@ -16,4 +16,5 @@ public interface QuestionDao {
     List<Question> selectLatestQuestion(@Param("userid") int userid,
                                         @Param("offset") int offset,
                                         @Param("limit") int limit);
+    void updateQuestionCount(@Param("id") int id,@Param("comment_count") int comment_count);
 }

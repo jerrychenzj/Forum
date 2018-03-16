@@ -8,6 +8,9 @@
     </select>
 
     <insert id="insertTicket" parameterType="LoginTicket">
+        <selectKey keyProperty="id" resultType="int">
+            select LAST_INSERT_ID()
+        </selectKey>
         insert into
         login_ticket
         (

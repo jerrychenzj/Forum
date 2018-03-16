@@ -18,6 +18,9 @@
         and  password=#{password}
     </select>
     <insert id="insertUser" parameterType="User">
+        <selectKey keyProperty="id" resultType="int">
+            select LAST_INSERT_ID()
+        </selectKey>
         insert into
             user
                 (

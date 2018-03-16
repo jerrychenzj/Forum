@@ -128,7 +128,7 @@
         <version>${jackson.version}</version>
       </dependency>
 
-      <!--freemarker -->
+      <!--freemarker.ftlrker -->
       <dependency>
         <groupId>org.freemarker</groupId>
         <artifactId>freemarker</artifactId>
@@ -325,6 +325,14 @@
         <version>7.0.47</version>
         <scope>provided</scope>
       </dependency>
+
+    <!-- 邮箱依赖包-->
+      <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>mail</artifactId>
+        <version>1.4.7</version>
+      </dependency>
+
     </dependencies>
 
 

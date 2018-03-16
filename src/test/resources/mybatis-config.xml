@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+
+<configuration>
+	<!-- setting 二级缓存  -->
+	
+	<!-- 别名 -->
+	<typeAliases>
+		<package name="com.jin.pojo"/>
+	</typeAliases>
+	
+	
+	
+	<!-- Mapper位置 跟Spring不用配置 -->
+
+</configuration>

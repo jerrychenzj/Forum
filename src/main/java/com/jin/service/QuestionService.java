@@ -11,4 +11,5 @@ public interface QuestionService {
     int addQuestion(Question question);
     List<Question> selectLatestQuestion(int userid, int offset, int limit);
     Question selectQuestionById(int id);
+    void updateQuestionCount(int id, int comment_count);
 }

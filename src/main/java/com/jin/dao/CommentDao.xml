@@ -5,9 +5,13 @@
         select *
         from comment
         where id=#{id}
+        AND    status = 0
     </select>
 
     <insert id="insertComment" parameterType="Comment">
+        <selectKey keyProperty="id" resultType="int">
+            select LAST_INSERT_ID()
+        </selectKey>q
         insert into
         comment
         (
@@ -15,7 +19,8 @@
         user_id,
         created_date,
         entity_id,
-        entity_type
+        entity_type,
+        status
         )
         values
         (
@@ -23,18 +28,15 @@
         #{user_id},
         #{created_date},
         #{entity_id},
-        #{entity_type}
+        #{entity_type},
+        #{status}
         )
     </insert>
 
-    <update id="updateComment" parameterType="Comment">
+    <update id="updateCommentStatus" >
         update comment
         set
-        content = #{content},
-        user_id = #{user_id},
-        created_date = #{created_date},
-        entity_id = #{entity_id},
-        entity_type = #{entity_type}
+        status = #{status}
         where id=#{id}
     </update>
 
@@ -44,4 +46,45 @@
         WHERE id = #{id}
     </delete>
 
+    <select id="selectCommentByEntity"   resultType="Comment">
+        select *
+        from comment
+        where
+        entity_id = #{entity_id}
+        AND
+        entity_type = #{entity_type}
+        AND
+        status = 0
+        ORDER BY created_date
+        DESC
+    </select>
+
+    <select id="getCommentCount"   resultType="int">
+        select COUNT(*)
+        from comment
+        where
+        entity_id = #{entity_id}
+        AND
+        entity_type = #{entity_type}
+        AND
+        status = 0
+    </select>
+
+    <select id="getCommentCountByUser"  parameterType="int"  resultType="int">
+    select COUNT(*)
+    from comment
+    where
+    user_id = #{user_id}
+    AND
+    status = 0
+</select>
+
+    <select id="getCommentsByUserId"  parameterType="int"  resultType="Comment">
+        select *
+        from comment
+        where
+        user_id = #{user_id}
+        AND
+        status = 0
+    </select>
 </mapper>

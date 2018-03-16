@@ -1,5 +1,8 @@
 package com.jin.service.impl;
 
+import com.jin.async.EnventModel;
+import com.jin.async.EnventProducer;
+import com.jin.async.EnventType;
 import com.jin.dao.LoginTicketDao;
 import com.jin.dao.UserDao;
 import com.jin.pojo.LoginTicket;
@@ -14,6 +17,7 @@ import sun.misc.BASE64Encoder;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -27,6 +31,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private LoginTicketDao ltdao;
 
+    @Autowired
+    private EnventProducer enventProducer;
 
     @Override
     public User findUserById(int id) {
@@ -83,6 +89,11 @@ public class UserServiceImpl implements UserService {
 
        if(!MyUtils.EncoderByMd5(password+user.getSalt()).equals(user.getPassword())){
             map.put("msg","密码错误");
+           String reg = "[\\w]+@[\\w]+.[\\w]+";
+           if(name.matches(reg)) {
+               enventProducer.fireEvent(new EnventModel(EnventType.LOGINERRO).setExt("name",name)
+                       .setExt("erroTime",new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
+           }
             return map;
        }
 
@@ -111,4 +122,9 @@ public class UserServiceImpl implements UserService {
           ltdao.insertTicket(lt);
           return lt.getTicket();
       }
+
+    @Override
+    public User findUserByName(String name) {
+        return dao.findUserByName(name);
+    }
 }

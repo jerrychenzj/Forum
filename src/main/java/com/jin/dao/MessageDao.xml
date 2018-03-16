@@ -8,14 +8,18 @@
     </select>
 
     <insert id="insertMessage" parameterType="Message">
+        <selectKey keyProperty="id" resultType="int">
+            select LAST_INSERT_ID()
+        </selectKey>
         insert into
         message
         (
         fromid,
-        toid.
+        toid,
         content,
         conversation_id,
-        created_date
+        created_date,
+        hasread
         )
         values
         (
@@ -23,7 +27,8 @@
         #{toid},
         #{content},
         #{conversation_id},
-        #{created_date}
+        #{created_date},
+        #{hasread}
         )
     </insert>
 
@@ -34,7 +39,8 @@
         toid = #{toid},
         content = #{content},
         conversation_id = #{conversation_id},
-        created_date = #{created_date}
+        created_date = #{created_date},
+        hasread = #{hasread},
         where id=#{id}
     </update>
 
@@ -44,4 +50,54 @@
         WHERE id = #{id}
     </delete>
 
+    <select id="getConversationDetail"   resultType="Message">
+        select *
+        from message
+        where conversation_id=#{conversation_id}
+        ORDER BY created_date DESC
+        limit #{offset},#{limit}
+    </select>
+<resultMap id="listmap" type="Message">
+    <id  column="ct" property="id"></id>
+    <result column="fromid" property="fromid"></result>
+    <result column="toid" property="toid"></result>
+    <result column="content" property="content"></result>
+    <result column="conversation_id" property="conversation_id"></result>
+    <result column="created_date" property="created_date"></result>
+    <result column="hasread" property="hasread"></result>
+</resultMap>
+    <select id="getConversationList" resultMap="listmap">
+        select *
+        from (
+        select *,(
+        select count(id)
+        from message
+        where conversation_id= b.conversation_id)
+        as ct
+        from message
+        as b
+        where not exists(
+        select 1
+        from message
+        where conversation_id= b.conversation_id
+        and b.created_date &lt; created_date )) ss
+        where fromid = #{userid} or toid = #{userid}
+        limit #{offset},#{limit}
+    </select>
+
+    <select id="getConversationUnReadCount"   resultType="int">
+        select COUNT(*)
+        from message
+        where toid=#{toid}
+        AND   conversation_id = #{conversation_id}
+        AND   hasread = 0
+    </select>
+
+    <update id="updatereadstatus" >
+        update myforum.message
+        set hasread = 1
+        where conversation_id = #{conversation_id}
+        and toid = #{toid}
+        and hasread = 0
+    </update>
 </mapper>

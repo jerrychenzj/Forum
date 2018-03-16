@@ -8,6 +8,9 @@
     </select>
 
     <insert id="insertQuestion" parameterType="Question">
+        <selectKey keyProperty="id" resultType="int">
+            select LAST_INSERT_ID()
+        </selectKey>
         insert into
         question
         (
@@ -34,6 +37,13 @@
         content = #{content},
         user_id = #{user_id},
         created_date = #{created_date},
+        comment_count = #{comment_count}
+        where id=#{id}
+    </update>
+
+    <update id="updateQuestionCount" >
+        update question
+        set
         comment_count = #{comment_count}
         where id=#{id}
     </update>

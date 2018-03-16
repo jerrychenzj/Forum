@@ -13,6 +13,7 @@ public class Comment implements Serializable{
     private Date   created_date;
     private int    entity_id;
     private int    entity_type;
+    private int    status;
 
     public int getId() {
         return id;
@@ -62,14 +63,23 @@ public class Comment implements Serializable{
         this.entity_type = entity_type;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public Comment(){}
 
-    public Comment(int id, String content, int user_id, Date created_date, int entity_id, int entity_type) {
+    public Comment(int id, String content, int user_id, Date created_date, int entity_id, int entity_type, int status) {
         this.id = id;
         this.content = content;
         this.user_id = user_id;
         this.created_date = created_date;
         this.entity_id = entity_id;
         this.entity_type = entity_type;
+        this.status = status;
     }
 }

@@ -13,4 +13,5 @@ public interface UserService {
      Map register(String name,String password) throws NoSuchAlgorithmException, UnsupportedEncodingException;
      Map login(String name,String password) throws NoSuchAlgorithmException, UnsupportedEncodingException;
      void logout(String ticket);
+     User findUserByName(String name);
 }

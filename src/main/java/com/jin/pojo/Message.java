@@ -11,8 +11,9 @@ public class Message implements Serializable{
     private int fromid;
     private int toid;
     private String content;
-    private int conversation_id;
+    private String conversation_id;
     private Date created_date;
+    private int hasread;
 
     public int getId() {
         return id;
@@ -46,12 +47,26 @@ public class Message implements Serializable{
         this.content = content;
     }
 
-    public int getConversation_id() {
-        return conversation_id;
+    public String getConversation_id() {
+        if(fromid<toid)
+        {
+            return String.format("%d_%d",fromid,toid);
+        }else
+        {
+              return String.format("%d_%d",toid,fromid);
+        }
     }
 
-    public void setConversation_id(int conversation_id) {
+    public void setConversation_id(String conversation_id) {
         this.conversation_id = conversation_id;
+    }
+
+    public int getHasread() {
+        return hasread;
+    }
+
+    public void setHasread(int hasread) {
+        this.hasread = hasread;
     }
 
     public Date getCreated_date() {
@@ -64,12 +79,13 @@ public class Message implements Serializable{
 
     public Message(){}
 
-    public Message(int id, int fromid, int toid, String content, int conversation_id, Date created_date) {
+    public Message(int id, int fromid, int toid, String content, String conversation_id, Date created_date, int hasread) {
         this.id = id;
         this.fromid = fromid;
         this.toid = toid;
         this.content = content;
         this.conversation_id = conversation_id;
         this.created_date = created_date;
+        this.hasread = hasread;
     }
 }
