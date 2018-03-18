@@ -28,7 +28,11 @@
     <script async="" src="https://ssl.google-analytics.com/ga.js"></script>
     <script src="/resources/scripts/instant.e7a17de6.js"></script>
     <script type="text/javascript">
+        function changeImage() {
 
+            document.getElementById("img").src = "/imageCode?time="
+                + new Date().getTime();
+        }
         function regfc(){
             var form = document.getElementById("regloginform");
             form.action="/login/reg.do";
@@ -63,10 +67,17 @@
                             <div class="input-wrapper">
                                 <input type="password" name="password" aria-label="密码" placeholder="密码" required="">
                             </div>
-                            <div class="input-wrapper captcha-module" data-type="en">
-                                <input id="captcha" name="" placeholder="验证码" required="" data-rule-required="true" data-msg-required="请填写验证码" class="is-ignoreValidation">
-                                <div class="captcha-container">
-                                    <img class="js-refreshCaptcha captcha" width="120" height="30" data-tip="s$t$看不清楚？换一张" alt="验证码">
+                            <div class="input-wrapper " data-type="en">
+
+                            </div>
+                            <div class="input-wrapper">
+                                <div class="col-md-6">
+                                    <input id="captcha"  placeholder="验证码" required="required" name="check_code"  data-rule-required="true" data-msg-required="请填写验证码"  class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="link" href="javascript:;" onclick="changeImage()">
+                                        <img src="/imageCode" title="看不清，换一张" style="width: 100%; height: 100%;" id="img">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -76,10 +87,6 @@
                             <button class="sign-button submit" id="reg" onclick="regfc()">注册</button>
                         </div>
                         <div class="signin-misc-wrapper clearfix">
-                            <label class="remember-me">
-                                <input type="checkbox" name="rememberme" checked="" value="false"> 记住我
-                            </label>
-                            <a class="unable-login" href="#">无法登录?</a>
                         </div>
                     </form>
                 </div>

@@ -174,12 +174,14 @@
                     //alert(countid);
                     document.getElementById(followercountid).innerHTML=data.msg+" 粉丝";
 
-                   var followeetotalid = "followeetotal"+userid;
-                    document.getElementById(followeetotalid).innerHTML = data.msg
-
                     var followUserid = "followUser"+entityid;
                     document.getElementById(followUserid).onclick = function () { unfollowUser(userid,entityid) };
                     document.getElementById(followUserid).innerHTML = "取消关注";
+
+                   var followeetotalid = "followeetotal"+userid;
+                    document.getElementById(followeetotalid).innerHTML = data.msg;
+
+
                 }
             }
         });
@@ -202,12 +204,15 @@
                     //alert(countid);
                    document.getElementById(followercountid).innerHTML=data.msg+" 粉丝";
 
+
+                    var followUserid = "followUser"+entityid;
+                    document.getElementById(followUserid).onclick= function () { followUser(userid,entityid) };
+                    document.getElementById(followUserid).innerHTML = "关注";
+
                     var followeetotalid = "followeetotal"+userid;
                     document.getElementById(followeetotalid).innerHTML = data.msg;
 
-                   var followUserid = "followUser"+entityid;
-                    document.getElementById(followUserid).onclick= function () { followUser(userid,entityid) };
-                    document.getElementById(followUserid).innerHTML = "关注";
+
 
                 }
             }

@@ -25,6 +25,7 @@
 		<mvc:interceptor>
 			<!--规则    /buyer/inder  web.xml  /-->
 			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/imageCode" />
 			 <!--拦截之后处理类 -->
 			<bean class="com.jin.Interceptor.PassPortInterceptor"/>
 		</mvc:interceptor>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by JINS on 2018/2/28.
@@ -34,9 +35,15 @@ public class LoginController {
        }
 
        @RequestMapping("reg")
-       public String register(String name, String password, Model model, HttpServletResponse response,
+       public String register(HttpSession httpSession,String name,String check_code, String password, Model model, HttpServletResponse response,
                               @RequestParam(value = "next",required = false) String next){
            try {
+               String checkcode=(String) httpSession.getAttribute("checkcode_session");
+               if(!check_code.equals(checkcode))
+               {
+                   model.addAttribute("msg","验证码错误");
+                   return "login";
+               }
                Map<String, String> map = userservice.register(name, password);
                if (map.containsKey("ticket")) {
                    Cookie cookie  = new Cookie("ticket",map.get("ticket"));
@@ -58,10 +65,16 @@ public class LoginController {
        }
 
        @RequestMapping("loginaction")
-       public String loginAction(String name, String password, Model model, HttpServletResponse response,
+       public String loginAction(HttpSession httpSession,String name,String check_code, String password, Model model, HttpServletResponse response,
                                  @RequestParam(value = "rememberme" ,defaultValue ="false") boolean rememberme,
                                   @RequestParam(value = "next",required = false) String next){
            try {
+               String checkcode=(String) httpSession.getAttribute("checkcode_session");
+               if(!check_code.equals(checkcode))
+               {
+                   model.addAttribute("msg","验证码错误");
+                   return "login";
+               }
                Map<String, String> map = userservice.login(name, password);
                if (map.containsKey("ticket")) {
                    Cookie cookie  = new Cookie("ticket",map.get("ticket"));

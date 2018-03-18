@@ -11,7 +11,7 @@
     <insert id="insertComment" parameterType="Comment">
         <selectKey keyProperty="id" resultType="int">
             select LAST_INSERT_ID()
-        </selectKey>q
+        </selectKey>
         insert into
         comment
         (

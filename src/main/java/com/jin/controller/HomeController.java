@@ -44,26 +44,6 @@ public class HomeController {
     @RequestMapping("/home")
     public String gethomepage(Model model,@RequestParam(value = "offset",required = false,defaultValue = "0") int offset)
     {
-   /*     Random r = new Random();
-        for(int i =0;i<10;i++){
-            User user = new User();
-            user.setHead_url(String.format("http://images.nowcoder.com/head/%dt.png",r.nextInt(1000)));
-            user.setName(String.format("user%d",i));
-            user.setPassword(""+i);
-            user.setSalt(""+i);
-            userService.addUser(user);
-
-            Question question = new Question();
-            question.setUser_id(i+1);
-            question.setComment_count(i);
-            question.setContent(String.format("Blalalallalalala%d",i));
-            Date date = new Date();
-            date.setTime(date.getTime()+1000*3600*i);
-            question.setCreated_date(date);
-            question.setTitle(String.format("TITLE%d",i));
-            questionService.addQuestion(question);
-
-        }*/
         List<Question> questions = questionService.selectLatestQuestion(0,offset,10);
         if (questions.size()==0 && offset !=0){
             offset = offset-10;

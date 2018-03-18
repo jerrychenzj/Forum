@@ -9,10 +9,10 @@
                     <div class="zm-profile-card zm-profile-section-item zg-clear no-hovercard">
                         <div class="zg-right">
                             <c:if test="${info.followed}">
-                                <button id="followUser${info.user.id}" data-follow="m:button" data-id="e61f6ff403018cab810c63a660146c35" class="zg-btn zg-btn-unfollow zm-rich-follow-btn small nth-0" onclick="unfollowUser(${info.id},${fromuser.id})">取消关注</button>
+                                <button id="followUser${fromuser.id}" data-follow="m:button" data-id="e61f6ff403018cab810c63a660146c35" class="zg-btn zg-btn-unfollow zm-rich-follow-btn small nth-0" onclick="unfollowUser(${info.id},${fromuser.id})">取消关注</button>
                             </c:if>
                             <c:if test="${!info.followed}">
-                                <button id="followUser${info.user.id}" data-follow="m:button" data-id="a183b32632088ad4cb0ebf944e555eed" class="zg-btn zg-btn-follow zm-rich-follow-btn small nth-0"  onclick="followUser(${info.id},${fromuser.id})">关注他</button>
+                                <button id="followUser${fromuser.id}" data-follow="m:button" data-id="a183b32632088ad4cb0ebf944e555eed" class="zg-btn zg-btn-follow zm-rich-follow-btn small nth-0"  onclick="followUser(${info.id},${fromuser.id})">关注他</button>
                             </c:if>
                         </div>
                         <a title="${fromuser.name}" data-tip="p$t$buaabarty" class="zm-item-link-avatar" href="/Forum/userhome/${fromuser.id}.do">
@@ -21,15 +21,14 @@
                         <div class="zm-list-content-medium">
                             <h2 class="zm-list-content-title"><a data-tip="p$t$buaabarty" href="https://www.nowcoder.com/people/buaabarty" class="zg-link" title="${fromuser.name}">${fromuser.name}</a></h2>
 
-                                <%--<div class="zg-big-gray">计蒜客教研首席打杂</div>--%>
                             <div class="details zg-gray">
                                 <a id="follower${fromuser.id}" target="_blank" href="/Forum/followers/${fromuser.id}.do" class="zg-link-gray-normal">${info.followers} 粉丝</a>
                                 /
                                 <a target="_blank" href="/Forum/followees/${fromuser.id}.do" class="zg-link-gray-normal">${info.followees} 关注</a>
                                 /
-                                <a target="_blank" href="" class="zg-link-gray-normal">${info.commentCount} 回答</a>
+                                <a target="_blank" href="#" class="zg-link-gray-normal">${info.commentCount} 回答</a>
                                 /
-                                <a target="_blank" href="" class="zg-link-gray-normal">${info.likecount} 赞同</a>
+                                <a target="_blank" href="#" class="zg-link-gray-normal">${info.likecount} 赞同</a>
                             </div>
 
                         </div>

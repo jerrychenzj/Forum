@@ -11,12 +11,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-ZA-Response-Id" content="46acde5c53db46f2806ccad726de9826">
+    <link rel="shortcut icon" type="images/x-icon" href="/jin.ico" />
     <title>首页 - Forum</title>
     <meta name="apple-itunes-app" content="app-id=432274380">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="mobile-agent" content="format=html5;url=https://nowcoder.com/">
     <meta id="znonce" name="znonce" content="d3edc464cf014708819feffde7ddd01e">
-    <link rel="search" type="application/opensearchdescription+xml" href="https://nowcoder.com/static/search.xml" title="Forum">
+    <link rel="search" type="application/opensearchdescription+xml" href="/Forum/home.do" title="Forum">
     <link rel="stylesheet" href="/resources/styles/index.css">
     <link rel="stylesheet" href="/resources/styles/letter.css">
     <link rel="stylesheet" href="/resources/styles/result.css">
@@ -55,8 +56,8 @@
                                 <div class="zm-editable-editor-outer">
                                     <div class="zm-editable-editor-field-wrap">
                                         <div id="mock:k" class="zm-editable-editor-field-element editable" g_editable="true" role="textbox" contenteditable="true" style="font-style: italic;">
-                                            <p>
-                                                <span id="zh_question_content" style="font-style: normal;color: #999;">问题背景、条件等详细信息</span></p>
+                                            <p id="zh_question_content">
+                                                <span  style="font-style: normal;color: #999;">问题背景、条件等详细信息</span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -103,8 +104,8 @@
                                 <div class="zm-editable-editor-outer">
                                     <div class="zm-editable-editor-field-wrap">
                                         <div id="mock:k" class="zm-editable-editor-field-element editable" g_editable="true" role="textbox" contenteditable="true" style="font-style: italic;">
-                                            <p>
-                                                <span id="zh_message_content" style="font-style: normal;color: #999;">私信内容</span></p>
+                                            <p id="zh_message_content">
+                                                <span  style="font-style: normal;color: #999;">私信内容</span></p>
                                         </div>
                                     </div>
                                 </div>

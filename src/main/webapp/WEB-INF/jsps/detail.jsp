@@ -17,10 +17,10 @@
                     <div class="zm-profile-card zm-profile-section-item zg-clear no-hovercard">
                         <div class="zg-right">
                             <c:if test="${info.followed}">
-                                <button id="followUser${info.user.id}" data-follow="m:button" data-id="e61f6ff403018cab810c63a660146c35" class="zg-btn zg-btn-unfollow zm-rich-follow-btn small nth-0" onclick="unfollowUser(${info.id},${fromuser.id})">取消关注</button>
+                                <button id="followUser${fromuser.id}" data-follow="m:button" data-id="e61f6ff403018cab810c63a660146c35" class="zg-btn zg-btn-unfollow zm-rich-follow-btn small nth-0" onclick="unfollowUser(${info.id},${fromuser.id})">取消关注</button>
                             </c:if>
                             <c:if test="${!info.followed}">
-                                <button id="followUser${info.user.id}" data-follow="m:button" data-id="a183b32632088ad4cb0ebf944e555eed" class="zg-btn zg-btn-follow zm-rich-follow-btn small nth-0"  onclick="followUser(${info.id},${fromuser.id})">关注他</button>
+                                <button id="followUser${fromuser.id}" data-follow="m:button" data-id="a183b32632088ad4cb0ebf944e555eed" class="zg-btn zg-btn-follow zm-rich-follow-btn small nth-0"  onclick="followUser(${info.id},${fromuser.id})">关注他</button>
                             </c:if>
                         </div>
                         <a title="${fromuser.name}" data-tip="p$t$buaabarty" class="zm-item-link-avatar" href="/Forum/userhome/${fromuser.id}.do">
@@ -169,9 +169,11 @@
                     </div>
                     <div class="zm-editable-editor-wrap" style="">
                         <div class="zh-answer-form clearfix">
+                            <c:if test="${not empty user}">
                             <a href="/Forum/userhome/${user.id}.do" title="${user.name}" class="zm-item-link-avatar" data-tip="p$t$hu-yuan-24-48">
                                 <img src="${user.head_url}" class="zm-list-avatar"></a>
-                            <div>
+                            </c:if>
+                                <div>
                                 <div class="zu-answer-form-title">
                                     <a href="/Forum/userhome/${user.id}.do" title="${user.name}" data-tip="p$t$hu-yuan-24-48">${user.name}</a>
                                 </div>
@@ -273,8 +275,8 @@
                             </div>
                             <div class="zm-editable-editor-field-wrap">
                                 <div id="mock:f" class="zm-editable-editor-field-element editable" g_editable="true" role="textbox" contenteditable="true" style="font-style: italic;">
-                                    <p>
-                                        <span  id="addcomment"  style="font-style: normal;color: #999;">写回答…</span></p>
+                                    <p id="addcomment">
+                                        <span   style="font-style: normal;color: #999;">写回答…</span></p>
                                 </div>
                                 <div class="editable-dropzone">
                                     <div class="row">

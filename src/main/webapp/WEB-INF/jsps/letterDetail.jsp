@@ -10,7 +10,8 @@
     <link rel="stylesheet" type="text/css" href="/resources/styles/font-awesome.min.css">
 
     <link rel="stylesheet" media="all" href="/resources/styles/letter.css">
-
+    <link rel="shortcut icon" type="images/x-icon" href="/jin.ico" />
+    <title>首页 - Forum</title>
     <script src="/resources/scripts/hm.js"></script>
     <script src="/resources/scripts/detail.js"></script>
 
