@@ -50,7 +50,7 @@
     <div class="index-main">
         <div class="index-main-body">
             <div class="index-header">
-                <h1 class="logo hide-text"><img src="/resources/images/res/nk.png" alt=""></h1>
+                <h1 class="logo hide-text"><img src="/resources/images/res/jin.jpg" alt=""></h1>
                 <h2 class="subtitle">
                     ${empty msg ?  '与世界分享你的知识、经验和见解': msg}
                 </h2>

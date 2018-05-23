@@ -34,9 +34,9 @@
 /
     <a target="_blank" href="/Forum/followees/${follower.user.id}.do" class="zg-link-gray-normal">${follower.followees} 关注</a>
 /
-<a target="_blank" href="" class="zg-link-gray-normal">${follower.commentCount} 回答</a>
+<a target="_blank" href="JavaScript:void()" class="zg-link-gray-normal">${follower.commentCount} 回答</a>
 /
-<a target="_blank" href="" class="zg-link-gray-normal">${follower.likecount} 赞同</a>
+<a target="_blank" href="JavaScript:void()" class="zg-link-gray-normal">${follower.likecount} 赞同</a>
 </div>
 
 </div>

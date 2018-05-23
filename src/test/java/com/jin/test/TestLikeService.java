@@ -1,6 +1,7 @@
 package com.jin.test;
 
 import com.jin.service.LikeService;
+import com.jin.utils.MyUtils;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,12 @@ public class TestLikeService {
         throw new IllegalArgumentException("出现异常了");
     }
 
+    @Test
+    public  void testNotHtml(){
+        String ss = "系统 ，编辑于 2018-03-14 10:28:28\n" +
+                ":#333333;\"> 推荐一本<font style='color:red' >你</font>认为<font style='color:red' >好</font>的技术类书籍_____？ </div> <div style=\"color:#333333;\"> <br/> </div> <h2 style=\"font-weight ";
+        System.out.println(MyUtils.stripHtml(ss));
+    }
     @BeforeClass
     public static void  beforeClass(){
         System.out.println("beforeClass");

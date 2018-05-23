@@ -5,7 +5,7 @@
         <div class="zg-wrap zu-main clearfix ">
             <div class="zm-profile-section-wrap zm-profile-followee-page">
 <div class="zm-profile-section-head">
-    <span  class="zm-profile-section-name"><a href="/people/zjuyxy">${curUser.name}</a> 关注了 <strong id="followeetotal${curUser.id}">${followeeCount}</strong> 人</span>
+    <span  class="zm-profile-section-name"><a href="/Forum/userhome/${curUser.id}.do">${curUser.name}</a> 关注了 <strong id="followeetotal${curUser.id}">${followeeCount}</strong> 人</span>
 <a class="zg-right zg-link-litblue-normal zm-profile-answer-page-return" href="/Forum/userhome/${curUser.id}.do">返回个人主页</a>
 </div>
 <div class="zm-profile-section-list">
@@ -26,7 +26,7 @@
 <img src="${followee.user.head_url}" class="zm-item-img-avatar">
 </a>
 <div class="zm-list-content-medium">
-<h2 class="zm-list-content-title"><a data-tip="p$t$buaabarty" href="https://www.nowcoder.com/people/buaabarty" class="zg-link" title="${followee.user.name}">${followee.user.name}</a></h2>
+<h2 class="zm-list-content-title"><a data-tip="p$t$buaabarty" href="/Forum/userhome/${followee.user.id}.do" class="zg-link" title="${followee.user.name}">${followee.user.name}</a></h2>
 
 <%--<div class="zg-big-gray">计蒜客教研首席打杂</div>--%>
 <div class="details zg-gray">
@@ -34,9 +34,9 @@
 /
     <a target="_blank" href="/Forum/followees/${followee.user.id}.do" class="zg-link-gray-normal">${followee.followees} 关注</a>
 /
-<a target="_blank" href="" class="zg-link-gray-normal">${followee.commentCount} 回答</a>
+<a target="_blank" href="JavaScript:void()" class="zg-link-gray-normal">${followee.commentCount} 回答</a>
 /
-<a target="_blank" href="" class="zg-link-gray-normal">${followee.likecount} 赞同</a>
+<a target="_blank" href="JavaScript:void()" class="zg-link-gray-normal">${followee.likecount} 赞同</a>
 </div>
 
 </div>

@@ -55,7 +55,7 @@ public class FollowController {
     @ResponseBody
     public String followUser(Model model,@RequestParam("userId") int userId) {
               if(hostHolder.getUser()==null){
-                  return MyUtils.getJSONString(999);
+                  return MyUtils.getJSONString(999,"用户未登录");
               }
         boolean ret = followService.follow(hostHolder.getUser().getId(),userId,MyUtils.ENTITY_USER);
         enventProducer.fireEvent(new EnventModel(EnventType.FOLLOWER).setActionId(hostHolder.getUser().getId())
@@ -68,7 +68,7 @@ public class FollowController {
     @ResponseBody
     public String unfollowUser(Model model,@RequestParam("userId") int userId) {
         if(hostHolder.getUser()==null){
-            return MyUtils.getJSONString(999);
+            return MyUtils.getJSONString(999,"用户未登录");
         }
         enventProducer.fireEvent(new EnventModel(EnventType.UNFOLLOWER).setActionId(hostHolder.getUser().getId())
                 .setEntityId(userId).setEntityType(MyUtils.ENTITY_USER).setEntityOwnerId(userId));
@@ -81,7 +81,7 @@ public class FollowController {
     @ResponseBody
     public String followQuestion(Model model,@RequestParam("questionId") int questionId) {
         if(hostHolder.getUser()==null){
-            return MyUtils.getJSONString(999);
+            return MyUtils.getJSONString(999,"用户未登录");
         }
        Question question = questionService.selectQuestionById(questionId);
         if (question == null){
@@ -105,7 +105,7 @@ public class FollowController {
     @ResponseBody
     public String unfollowQuestion(Model model,@RequestParam("questionId") int questionId) {
         if(hostHolder.getUser()==null){
-            return MyUtils.getJSONString(999);
+            return MyUtils.getJSONString(999,"用户未登录");
         }
 
         Question question = questionService.selectQuestionById(questionId);

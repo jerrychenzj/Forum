@@ -48,7 +48,6 @@ public class EnventConsumer implements InitializingBean,ApplicationContextAware{
                 }
             }
         }
-
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {

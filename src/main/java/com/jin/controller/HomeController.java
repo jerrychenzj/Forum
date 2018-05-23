@@ -52,8 +52,8 @@ public class HomeController {
         List<HashMap> vos = new ArrayList<>();
         for(Question question:questions){
             HashMap map = new HashMap();
-            String content = question.getContent();
-            question.setContent(content.length()<=500?content:content.substring(0,500));
+            String content = MyUtils.stripHtml(question.getContent().length()<=500?question.getContent():question.getContent().substring(0,500));
+            question.setContent(content);
             map.put("question",question);
             map.put("user",userService.findUserById(question.getUser_id()));
             map.put("followers",followService.getFollowerCount(question.getId(),MyUtils.ENTITY_QUESTION));
@@ -80,8 +80,8 @@ public class HomeController {
         }
         List<HashMap> vos = new ArrayList<>();
         for(Question question:questions){
-            String content = question.getContent();
-            question.setContent(content.length()<=500?content:content.substring(0,500));
+            String content = MyUtils.stripHtml(question.getContent().length()<=500?question.getContent():question.getContent().substring(0,500));
+            question.setContent(content);
             HashMap map = new HashMap();
             map.put("question",question);
             map.put("user",userService.findUserById(question.getUser_id()));

@@ -269,8 +269,15 @@
             </div>
             <div class="actions clearfix js-contentActions">
              <span class="hidden-tablet hidden-desktop"><a href="https://www.nowcoder.com/search?type=content&amp;q=qiche#" class="action-item votenum-mobile zm-item-vote-count js-openVoteDialog"><span data-bind-votecount="">${vo.followers}</span><i class="zg-icon arrow"></i></a></span>
-             <a href="https://www.nowcoder.com/search?type=content&amp;q=qiche#" class="action-item zg-follow" data-follow="q:link" data-id="9102803"><i class="z-icon-follow"></i>关注问题</a>
-             <a href="#" class="action-item js-toggleCommentBox"><i class="z-icon-comment"></i><span class="label">${vo.question.comment_count} 条评论</span></a>
+             <c:if test="${! vo.followed}">
+              <a id="followQuestion${vo.question.id}" data-follow="q:link" class="follow-link zg-follow meta-item"  href="javascript:followQuestion(${vo.question.id});" id="sfb-123114">
+               <i class="z-icon-follow"></i>关注问题</a>
+             </c:if>
+             <c:if test="${vo.followed}">
+              <a id="followQuestion${vo.question.id}" data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:unfollowQuestion(${vo.question.id});" id="sfb-123114">
+               <i class="z-icon-follow"></i>取消关注</a>
+             </c:if>
+             <a href="JavaScript:void()" class="action-item js-toggleCommentBox"><i class="z-icon-comment"></i><span class="label">${vo.question.comment_count} 条评论</span></a>
             </div>
            </div>
           </div>

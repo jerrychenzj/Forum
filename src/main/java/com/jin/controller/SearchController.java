@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.HtmlUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,10 +42,12 @@ public class SearchController {
     UserService userService;
 
     @RequestMapping("search")
-    public String search(Model model, @RequestParam("keyWord") String keyWord,
+    public String search(Model model, @RequestParam(value = "keyWord",required = false) String keyWord,
                          @RequestParam(value = "offset",defaultValue = "0",required = false) int offset,
                          @RequestParam(value = "count",defaultValue = "10",required = false) int count ){
         try {
+            if (keyWord==null)
+                return "redirect:/Forum/home.do";
             List<Question> list = searchService.searchQuestion(keyWord,offset,count,"<font style='color:red' >","</font>");
             if (list.size()==0 && offset !=0){
                 offset = offset-10;
@@ -57,8 +60,8 @@ public class SearchController {
                 q.setCreated_date(question.getCreated_date());
                 int commentCountcount = commentService.getCommentCount(q.getId(), MyUtils.ENTITY_QUESTION);
                 q.setComment_count(commentCountcount);
-                String content = q.getContent();
-                q.setContent(content.length()<=500?content:content.substring(0,500));
+                String content = MyUtils.stripHtml(q.getContent().length()<=500?q.getContent():q.getContent().substring(0,500));
+                q.setContent(content);
                 questionService.updateQuestionCount(q.getId(),commentCountcount);
                 map.put("question",q);
                 map.put("followers",followService.getFollowerCount(q.getId(),MyUtils.ENTITY_QUESTION));

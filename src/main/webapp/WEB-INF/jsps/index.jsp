@@ -11,7 +11,7 @@
                             <c:if test="${info.followed}">
                                 <button id="followUser${fromuser.id}" data-follow="m:button" data-id="e61f6ff403018cab810c63a660146c35" class="zg-btn zg-btn-unfollow zm-rich-follow-btn small nth-0" onclick="unfollowUser(${info.id},${fromuser.id})">取消关注</button>
                             </c:if>
-                            <c:if test="${!info.followed}">
+                            <c:if test="${!info.followed && info.id != fromuser.id}">
                                 <button id="followUser${fromuser.id}" data-follow="m:button" data-id="a183b32632088ad4cb0ebf944e555eed" class="zg-btn zg-btn-follow zm-rich-follow-btn small nth-0"  onclick="followUser(${info.id},${fromuser.id})">关注他</button>
                             </c:if>
                         </div>
