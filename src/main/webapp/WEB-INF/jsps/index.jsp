@@ -116,7 +116,7 @@
                                                         <a id="followQuestion${vo.question.id}" data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:unfollowQuestion(${vo.question.id});" id="sfb-123114">
                                                             <i class="z-icon-follow"></i>取消关注</a>
                                                     </c:if>
-                                                    <a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+                                                    <a href="JavaScript:void()" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
                                                         <i class="z-icon-comment"></i> ${vo.question.comment_count}条评论</a>
 
 
@@ -125,7 +125,6 @@
                                                         <i class="z-icon-fold"></i>收起</button>
                                                 </div>
                                             </div>
-                                            <a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
                                         </div>
                                     </div>
                                 </div>
