@@ -33,6 +33,7 @@
 		<mvc:mapping path="/Forum/userhome/*"/>
 		<mvc:mapping path="/Forum/followers/*" />
 		<mvc:mapping path="/Forum/followees/*" />
+		<mvc:mapping path="/Forum/feed/*" />
 		<bean class="com.jin.Interceptor.LoginRequredInterceptor"/>
 	    </mvc:interceptor>
 	</mvc:interceptors>
